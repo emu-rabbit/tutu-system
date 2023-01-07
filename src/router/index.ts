@@ -3,11 +3,11 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        redirect: '/first-scene'
+        redirect: '/rabbit-loading'
     },
     {
-        path: '/first-scene',
-        component: () => import('@/views/FirstScene.vue')
+        path: '/rabbit-loading',
+        component: () => import('@/views/RabbitLoading.vue')
     }
 ]
 
