@@ -13,12 +13,12 @@ export default function <State> (states: StateData<State>[]) {
     const state = computed({
         get: () => stateInner.value,
         set: (newState: State) => {
+            stateInner.value = newState
             const data = states.find(d => d.state === newState)
             if (!data) {
-                console.warn(`State not found in data ${newState}`)
+                // console.warn(`State not found in data ${newState}`)
                 return
             }
-            stateInner.value = data.state
             progress.value = data.progress
             message.value = data.message
         }

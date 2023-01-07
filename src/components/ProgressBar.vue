@@ -3,7 +3,8 @@
         <div
             :class="$style.inner"
             :style="{
-                width: `${progress}%`
+                width: `${progress}%`,
+                backgroundColor: color ? color : '#ff7777'
             }"
         />
     </div>
@@ -11,7 +12,8 @@
 
 <script lang="ts" setup>
 defineProps<{
-    progress: InRange<0, 100>
+    progress: InRange<0, 100>,
+    color?: string
 }>()
 </script>
 
@@ -35,6 +37,5 @@ defineProps<{
     transition-property: width;
     transition-duration: .5s;
     transition-timing-function: ease-in-out;
-    background-color: #ff7777;
 }
 </style>
