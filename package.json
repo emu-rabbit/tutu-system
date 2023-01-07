@@ -36,13 +36,20 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "vue/setup-compiler-macros": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
       "@vue/standard",
       "@vue/typescript/recommended"
     ],
+    "overrides": [{
+      "files": ["*.vue"],
+      "rules": {
+        "no-undef": 0
+      }
+    }],
     "parserOptions": {
       "ecmaVersion": 2020
     },

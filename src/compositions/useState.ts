@@ -23,6 +23,7 @@ export default function <State> (states: StateData<State>[]) {
             message.value = data.message
         }
     })
+    state.value = states[0].state
 
     return {
         progress,
