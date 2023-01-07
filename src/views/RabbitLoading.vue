@@ -3,7 +3,7 @@
         <div>
             <PaddedText :class="$style.message" :disable="paddingDisable || finished">
                 {{ message }}
-                <button v-if="state === 'request-waked'" @click="wakeResolver">叫醒這隻兔子</button>
+                <Button v-if="state === 'request-waked'" :class="$style.btn" @click="wakeResolver">叫醒這隻兔子</Button>
             </PaddedText>
             <ProgressBar
                 v-if="!slept && state !== 'post'"
@@ -16,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+import Button from '@/components/Button.vue'
 import PaddedText from '@/components/PaddedText.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import useState from '@/compositions/useState'
@@ -101,6 +102,10 @@ onMounted(async () => {
     .message {
         color: #ff7777;
         font-weight: bolder;
+
+        .btn {
+            margin-left: 0.5em;
+        }
     }
 
     .bar {
