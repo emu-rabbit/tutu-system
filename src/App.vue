@@ -10,6 +10,7 @@ body {
   background-attachment: fixed;
   margin: 0;
   padding: 0;
+  font-size: 1vw;
 }
 
 #app {
@@ -21,6 +22,6 @@ body {
 }
 
 p, button {
-  font-size: medium;
+  font-size: 1em;
 }
 </style>
