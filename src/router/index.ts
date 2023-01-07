@@ -8,6 +8,10 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/rabbit-loading',
         component: () => import('@/views/RabbitLoading.vue')
+    },
+    {
+        path: '/home',
+        component: () => import('@/views/Home.vue')
     }
 ]
 

@@ -37,5 +37,6 @@ defineProps<{
     transition-property: width;
     transition-duration: .5s;
     transition-timing-function: ease-in-out;
+    min-width: 6px;
 }
 </style>
