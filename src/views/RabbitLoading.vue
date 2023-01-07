@@ -1,25 +1,29 @@
 <template>
     <p>{{ progress }}</p>
     <p>{{ message }}</p>
+    <p>{{ state }}</p>
 </template>
 
 <script lang="ts" setup>
-import useProgress from '@/compositions/useProgress'
+import useState from '@/compositions/useState'
 import { wait } from '@/utils/timer'
 import { onMounted } from 'vue'
 
-const { progress, message, setProgressStatus } = useProgress()
+type State = 'init' | 'running'
+
+const { progress, message, state } = useState<State>([{
+    progress: 0,
+    message: 'Initializing',
+    state: 'init'
+}, {
+    progress: 50,
+    message: 'Running',
+    state: 'running'
+}])
 
 onMounted(async () => {
     await wait(2000)
-    setProgressStatus({
-        progress: 20,
-        message: 'Step1'
-    })
+    state.value = 'running'
     await wait(3000)
-    setProgressStatus({
-        progress: 80,
-        message: 'Meow'
-    })
 })
 </script>
