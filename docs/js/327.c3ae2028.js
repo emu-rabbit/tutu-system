@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkcute_owner"]=self["webpackChunkcute_owner"]||[]).push([[327],{5327:function(e,n,r){function u(e,n){return" Home "}r.r(n),r.d(n,{default:function(){return f}});var t=r(89);const c={},o=(0,t.Z)(c,[["render",u]]);var f=o}}]);
+//# sourceMappingURL=327.c3ae2028.js.map
