@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^1.2.2",
     "core-js": "^3.8.3",
     "pinia": "^2.0.23",
     "vue": "^3.2.13",
@@ -44,17 +45,24 @@
       "@vue/standard",
       "@vue/typescript/recommended"
     ],
-    "overrides": [{
-      "files": ["*.vue"],
-      "rules": {
-        "no-undef": 0
+    "overrides": [
+      {
+        "files": [
+          "*.vue"
+        ],
+        "rules": {
+          "no-undef": 0
+        }
       }
-    }],
+    ],
     "parserOptions": {
       "ecmaVersion": 2020
     },
     "rules": {
-      "indent": [1, 4],
+      "indent": [
+        1,
+        4
+      ],
       "vue/multi-word-component-names": 0
     }
   },

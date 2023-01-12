@@ -10,6 +10,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/RabbitLoading.vue')
     },
     {
+        path: '/rabbit-status',
+        component: () => import('@/views/RabbitStatus.vue')
+    },
+    {
         path: '/home',
         component: () => import('@/views/Home.vue')
     }
