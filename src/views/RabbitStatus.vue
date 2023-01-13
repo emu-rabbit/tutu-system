@@ -1,22 +1,86 @@
 <template>
-    <div>
+    <div
+        :class="$style.container"
+        :style="{
+            color: color
+        }"
+    >
         <h1>{{ status }}</h1>
-        <button @click="update">Refresh</button>
+        <h3>{{ diff }}</h3>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { latest } from '@/apis/RabbitStatus'
-import { onMounted, ref } from 'vue'
+import { computed, onUnmounted, onMounted, ref } from 'vue'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/zh-tw'
+
+dayjs.extend(relativeTime)
+dayjs.locale('zh-tw')
 
 const status = ref<number | null>(null)
+const createAt = ref<string | null>(null)
+const diff = ref<string>('')
+const color = computed(() => {
+    if (!status.value) return '#bbbbbb'
+    if (status.value < 10) {
+        return '#ad0000'
+    } else if (status.value < 25) {
+        return '#b94e4e'
+    } else if (status.value < 45) {
+        return '#db871f'
+    } else if (status.value < 60) {
+        return '#dba326'
+    } else if (status.value < 70) {
+        return '#69c5c1'
+    } else if (status.value < 85) {
+        return '#748bdd'
+    }
+    return '#26d36b'
+})
 const update = async () => {
     try {
-        status.value = (await latest()).data.data.status
+        const { data } = (await latest()).data
+        status.value = data.status
+        createAt.value = data.createAt
+        diff.value = dayjs(createAt.value).fromNow()
     } catch (e) {
         alert('無法取得兔子最新狀態QQ')
     }
 }
 
-onMounted(update)
+let timerID: number | null = null
+onMounted(async () => {
+    await update()
+    timerID = setInterval(update, 60 * 1000)
+})
+onUnmounted(() => {
+    if (timerID) clearInterval(timerID)
+})
 </script>
+
+<style lang="scss" module>
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1, h3 {
+        margin: 0;
+        margin-bottom: 2vh;
+    }
+
+    h1 {
+        font-size: 10vw;
+    }
+
+    h3 {
+        font-size: 2vw;
+    }
+}
+</style>

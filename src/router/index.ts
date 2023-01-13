@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        redirect: '/rabbit-loading'
+        redirect: '/rabbit-status'
     },
     {
         path: '/rabbit-loading',
