@@ -62,6 +62,9 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" module>
+body {
+    overflow: hidden;
+}
 .container {
     width: 100vw;
     height: 100vh;
@@ -76,11 +79,11 @@ onUnmounted(() => {
     }
 
     h1 {
-        font-size: 10vw;
+        font-size: 25vmin;
     }
 
     h3 {
-        font-size: 2vw;
+        font-size: 5vmin;
     }
 }
 </style>
