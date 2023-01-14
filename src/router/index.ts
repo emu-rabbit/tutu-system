@@ -5,9 +5,17 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         redirect: '/rabbit-status'
     },
+    // {
+    //     path: '/rabbit-loading',
+    //     component: () => import('@/views/RabbitLoading.vue')
+    // },
     {
-        path: '/rabbit-loading',
-        component: () => import('@/views/RabbitLoading.vue')
+        path: '/auth',
+        redirect: '/auth/login'
+    },
+    {
+        path: '/auth/register',
+        component: () => import('@/views/Register.vue')
     },
     {
         path: '/rabbit-status',
@@ -16,10 +24,6 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/rabbit-status/create',
         component: () => import('@/views/RabbitStatusCreate.vue')
-    },
-    {
-        path: '/home',
-        component: () => import('@/views/Home.vue')
     }
 ]
 
