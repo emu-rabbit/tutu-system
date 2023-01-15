@@ -14,6 +14,7 @@
         >
             登出
         </Button>
+        <RouterLink to="/rabbit-status"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink>
     </div>
 </template>
 
