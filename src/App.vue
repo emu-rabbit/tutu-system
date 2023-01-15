@@ -30,9 +30,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: xx-large;
+  }
+
+  p, button {
+    font-size: 1em;
+  }
+
+  a {
+    color: #2c3e50;
+    font-weight: bold;
+  }
 }
 
-p, button {
-  font-size: 1em;
-}
 </style>
