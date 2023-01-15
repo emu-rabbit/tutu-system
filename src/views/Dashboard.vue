@@ -5,6 +5,7 @@
     >
         <h2>{{ username }}</h2>
         <p>Email: {{ email }}</p>
+        <p>身分： {{ groupText }}</p>
         <Button
             :class="$style.btn"
             :round="true"
@@ -23,17 +24,23 @@ import { info, logout } from '@/apis/Auth'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from 'vant'
+import { computed } from '@vue/reactivity'
+
+const groupMap: Record<string, string> = { rabbit: '兔子大帝', owner: '主人', user: '兔粉' }
 
 const router = useRouter()
 
 const email = ref('')
 const username = ref('')
+const userGroups = ref<string[]>([])
+const groupText = computed(() => userGroups.value.map(group => (groupMap[group] || '')).join(', '))
 
 onMounted(async () => {
     try {
         const { data } = await info()
         email.value = data.email
         username.value = data.username
+        userGroups.value = data.user_groups
     } catch (e) {
         console.log(e)
         alert('取得個人資訊失敗QQ')
