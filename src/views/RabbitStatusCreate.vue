@@ -3,6 +3,7 @@
         class="centralize-container"
         :class="$style.container"
     >
+        <h2>兔兔現在狀態如何呢？</h2>
         <Field
             :class="$style.control"
             v-model="status"
