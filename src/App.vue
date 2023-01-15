@@ -2,6 +2,14 @@
   <router-view/>
 </template>
 
+<script lang="ts" setup>
+import { onMounted } from 'vue'
+
+const updateVH = () => document.body.style.setProperty('--vh', `${window.innerHeight / 100}px`)
+onMounted(updateVH)
+window.addEventListener('resize', updateVH)
+</script>
+
 <style lang="scss">
 body {
   background-image: url('@/assets/background.jpg');
