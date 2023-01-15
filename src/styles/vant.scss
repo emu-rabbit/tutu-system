@@ -1,0 +1,13 @@
+:root:root {
+    --van-primary-color: #ed69a6;
+}
+
+#app {
+    .van-field {
+        border-radius: 99999px;
+
+        .van-field__label {
+            padding-left: 8px;
+        }
+    }
+}

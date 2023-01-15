@@ -11,6 +11,9 @@ window.addEventListener('resize', updateVH)
 </script>
 
 <style lang="scss">
+@import '~@/styles/utils.scss';
+@import '~@/styles/vant.scss';
+
 body {
   background-image: url('@/assets/background.jpg');
   background-size: cover;
@@ -22,20 +25,11 @@ body {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Microsoft JhengHei, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-.centralize-container {
-    width: 100vw;
-    height: calc(var(--vh, 1vh) * 100);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 p, button {
