@@ -32,6 +32,10 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/rabbit-status/create',
         component: () => import('@/views/RabbitStatusCreate.vue')
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        component: () => import('@/views/404.vue')
     }
 ]
 
