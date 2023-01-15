@@ -18,6 +18,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Register.vue')
     },
     {
+        path: '/auth/login',
+        component: () => import('@/views/Login.vue')
+    },
+    {
         path: '/rabbit-status',
         component: () => import('@/views/RabbitStatus.vue')
     },
