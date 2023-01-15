@@ -55,6 +55,7 @@ const register = async () => {
 .container {
     .control {
         width: 80%;
+        max-width: 500px;
     }
 }
 </style>
