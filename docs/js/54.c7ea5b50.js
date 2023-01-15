@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkcute_owner"]=self["webpackChunkcute_owner"]||[]).push([[54],{89:function(n,t){t.Z=(n,t)=>{const c=n.__vccOpts||n;for(const[e,r]of t)c[e]=r;return c}},1054:function(n,t,c){c.r(t),c.d(t,{default:function(){return f}});var e=c(3396);const r={class:"centralize-container"},u=(0,e._)("div",null,[(0,e._)("h1",null,"404"),(0,e._)("p",null,"兔兔網站沒有這一頁QQ")],-1),o=[u];function s(n,t){return(0,e.wg)(),(0,e.iD)("div",r,o)}var l=c(89);const i={},a=(0,l.Z)(i,[["render",s]]);var f=a}}]);
-//# sourceMappingURL=54.63d65875.js.map
+//# sourceMappingURL=54.c7ea5b50.js.map

@@ -32,7 +32,7 @@
 import { generateRegisterOptions, verifyRegister } from '@/apis/Auth'
 import { ref } from 'vue'
 import { startRegistration } from '@simplewebauthn/browser'
-import { Field, Button } from 'vant'
+import { Field, Button, showNotify } from 'vant'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -44,11 +44,18 @@ const register = async () => {
         const { data: options } = await generateRegisterOptions({ email: email.value, username: username.value })
         const attResp = await startRegistration(options)
         await verifyRegister(attResp)
+        showNotify({
+            message: '註冊成功，可以登入了',
+            type: 'primary'
+        })
         router.push('/auth/login')
     } catch (e) {
         // TODO already registered
         console.log(e)
-        alert('註冊失敗QQ')
+        showNotify({
+            message: '註冊失敗',
+            type: 'primary'
+        })
     }
 }
 </script>

@@ -23,7 +23,7 @@
 import { info, logout } from '@/apis/Auth'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { Button } from 'vant'
+import { Button, showNotify } from 'vant'
 import { computed } from '@vue/reactivity'
 
 const groupMap: Record<string, string> = { rabbit: '兔子大帝', owner: '主人', user: '兔粉' }
@@ -43,7 +43,10 @@ onMounted(async () => {
         userGroups.value = data.user_groups
     } catch (e) {
         console.log(e)
-        alert('取得個人資訊失敗QQ')
+        showNotify({
+            message: '取得個人資訊失敗QQ',
+            type: 'primary'
+        })
         router.push('/auth/login')
     }
 })
