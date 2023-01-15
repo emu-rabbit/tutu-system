@@ -16,9 +16,9 @@
             type="primary"
             @click="login"
         >
-            註冊
+            登入
         </Button>
-        <RouterLink to="/auth/login">沒有帳號？前往註冊！</RouterLink>
+        <RouterLink to="/auth/register">沒有帳號？前往註冊！</RouterLink>
     </div>
 </template>
 

@@ -31,12 +31,16 @@ body {
   text-align: center;
   color: #2c3e50;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, p {
     margin: 0;
   }
 
   h1 {
     font-size: xx-large;
+  }
+
+  h2 {
+    font-size: x-large;
   }
 
   p, button {

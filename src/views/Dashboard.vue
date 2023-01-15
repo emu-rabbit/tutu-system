@@ -1,8 +1,19 @@
 <template>
-    <div>
-        <p>{{ username }}</p>
-        <p>{{ email }}</p>
-        <button @click="handleLogout">登出</button>
+    <div
+        class="centralize-container"
+        :class="$style.container"
+    >
+        <h2>{{ username }}</h2>
+        <p>Email: {{ email }}</p>
+        <Button
+            :class="$style.btn"
+            :round="true"
+            size="small"
+            type="primary"
+            @click="handleLogout"
+        >
+            登出
+        </Button>
     </div>
 </template>
 
@@ -10,6 +21,7 @@
 import { info, logout } from '@/apis/Auth'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { Button } from 'vant'
 
 const router = useRouter()
 
@@ -37,3 +49,19 @@ const handleLogout = async () => {
     }
 }
 </script>
+
+<style lang="scss" module>
+.container {
+    align-items: flex-start;
+    width: 70vw;
+    padding: 0 15vw;
+
+    p {
+        font-size: small !important;
+    }
+
+    .btn {
+        width: 20vw;
+    }
+}
+</style>
