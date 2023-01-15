@@ -9,3 +9,5 @@ export const verifyRegister = (arg: RegistrationResponseJSON) => axios.post(`${B
 
 export const generateAuthenticationOptions = (arg: { email: string }) => axios.post(`${BASEURL}/authentication/option`, { ...arg, rp_id: process.env.VUE_APP_RP_ID }, OPTIONS)
 export const verifyAuthentication = (arg: AuthenticationResponseJSON) => axios.post(`${BASEURL}/authentication/verify`, arg, OPTIONS)
+
+export const info = () => axios.get(`${BASEURL}/info`, OPTIONS)

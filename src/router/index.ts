@@ -22,6 +22,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Login.vue')
     },
     {
+        path: '/dashboard',
+        component: () => import('@/views/Dashboard.vue')
+    },
+    {
         path: '/rabbit-status',
         component: () => import('@/views/RabbitStatus.vue')
     },
