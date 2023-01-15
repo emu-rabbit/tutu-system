@@ -14,11 +14,12 @@ const username = ref('')
 const register = async () => {
     try {
         const { data: options } = await generateRegisterOptions({ email: email.value, username: username.value })
-        console.log(options)
         const attResp = await startRegistration(options)
         const verified = await verifyRegister(attResp)
+        // TODO register success
         console.log({ verified })
     } catch (e) {
+        // TODO already registered
         console.log(e)
         alert('註冊失敗QQ')
     }
