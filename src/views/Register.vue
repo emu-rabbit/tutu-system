@@ -33,6 +33,9 @@ import { generateRegisterOptions, verifyRegister } from '@/apis/Auth'
 import { ref } from 'vue'
 import { startRegistration } from '@simplewebauthn/browser'
 import { Field, Button } from 'vant'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const email = ref('')
 const username = ref('')
@@ -40,9 +43,8 @@ const register = async () => {
     try {
         const { data: options } = await generateRegisterOptions({ email: email.value, username: username.value })
         const attResp = await startRegistration(options)
-        const verified = await verifyRegister(attResp)
-        // TODO register success
-        console.log({ verified })
+        await verifyRegister(attResp)
+        router.push('/auth/login')
     } catch (e) {
         // TODO already registered
         console.log(e)

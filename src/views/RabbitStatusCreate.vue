@@ -6,6 +6,7 @@
         <Field
             :class="$style.control"
             v-model="status"
+            :disabled="disabled"
             label="狀態"
             type="number"
             min="0"
@@ -16,6 +17,7 @@
             :class="$style.control"
             :round="true"
             type="primary"
+            :disabled="disabled"
             @click="createStatus"
         >
             Create
@@ -24,9 +26,10 @@
 </template>
 
 <script lang="ts" setup>
-import { create } from '@/apis/RabbitStatus'
+import { create, latest } from '@/apis/RabbitStatus'
 import { ref } from '@vue/reactivity'
 import { Field, Button } from 'vant'
+import { onMounted } from 'vue'
 
 const status = ref(0)
 const createStatus = async () => {
@@ -38,6 +41,19 @@ const createStatus = async () => {
         alert('Failed')
     }
 }
+
+const disabled = ref(true)
+onMounted(async () => {
+    try {
+        const { data } = (await latest()).data
+        status.value = data.status
+        disabled.value = false
+    } catch (e) {
+        // ...
+    } finally {
+        disabled.value = false
+    }
+})
 </script>
 
 <style lang="scss" module>
