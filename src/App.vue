@@ -13,6 +13,7 @@ window.addEventListener('resize', updateVH)
 <style lang="scss">
 @import '~@/styles/utils.scss';
 @import '~@/styles/vant.scss';
+@import '~@/styles/nprogress.scss';
 
 body {
   background-image: url('@/assets/background.jpg');

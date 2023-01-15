@@ -12,6 +12,7 @@
     "axios": "^1.2.2",
     "core-js": "^3.8.3",
     "dayjs": "^1.11.7",
+    "nprogress": "^0.2.0",
     "pinia": "^2.0.23",
     "vant": "^4.0.8",
     "vue": "^3.2.13",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@simplewebauthn/typescript-types": "^7.0.0",
+    "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
