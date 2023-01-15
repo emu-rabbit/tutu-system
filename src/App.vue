@@ -43,13 +43,10 @@ body {
     font-size: x-large;
   }
 
-  p, button {
-    font-size: 1em;
-  }
-
   a {
     color: #2c3e50;
     font-weight: bold;
+    font-size: small;
   }
 }
 
