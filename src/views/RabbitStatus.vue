@@ -1,5 +1,6 @@
 <template>
     <div
+        class="centralize-container"
         :class="$style.container"
         :style="{
             color: color
@@ -66,13 +67,6 @@ body {
     overflow: hidden;
 }
 .container {
-    width: 100vw;
-    height: calc(var(--vh, 1vh) * 100);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     h1, h3 {
         margin: 0;
         margin-bottom: 2vh;

@@ -29,6 +29,15 @@ body {
   color: #2c3e50;
 }
 
+.centralize-container {
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 p, button {
   font-size: 1em;
 }
