@@ -44,6 +44,7 @@ onMounted(async () => {
     } catch (e) {
         console.log(e)
         alert('取得個人資訊失敗QQ')
+        router.push('/auth/login')
     }
 })
 
