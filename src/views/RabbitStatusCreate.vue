@@ -28,24 +28,19 @@
 
 <script lang="ts" setup>
 import { create, latest } from '@/apis/RabbitStatus'
+import { showPrimaryNotify } from '@/utils/notify'
 import { ref } from '@vue/reactivity'
-import { Field, Button, showNotify } from 'vant'
+import { Field, Button } from 'vant'
 import { onMounted } from 'vue'
 
 const status = ref(0)
 const createStatus = async () => {
     try {
         await create(status.value)
-        showNotify({
-            message: 'Success',
-            type: 'primary'
-        })
+        showPrimaryNotify('Success')
     } catch (e) {
         console.log(e)
-        showNotify({
-            message: 'Failed',
-            type: 'primary'
-        })
+        showPrimaryNotify('Failed')
     }
 }
 

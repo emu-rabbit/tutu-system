@@ -27,7 +27,8 @@ import { generateAuthenticationOptions, verifyAuthentication } from '@/apis/Auth
 import { startAuthentication } from '@simplewebauthn/browser'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
-import { Field, Button, showNotify } from 'vant'
+import { Field, Button } from 'vant'
+import { showPrimaryNotify } from '@/utils/notify'
 
 const router = useRouter()
 
@@ -37,17 +38,11 @@ const login = async () => {
         const { data: options } = await generateAuthenticationOptions({ email: email.value })
         const asstResp = await startAuthentication(options)
         await verifyAuthentication(asstResp)
-        showNotify({
-            message: '登入成功',
-            type: 'primary'
-        })
+        showPrimaryNotify('登入成功')
         router.push('/rabbit-status')
     } catch (e) {
         console.log(e)
-        showNotify({
-            message: '登入失敗',
-            type: 'primary'
-        })
+        showPrimaryNotify('登入失敗')
     }
 }
 </script>

@@ -14,11 +14,11 @@
 <script lang="ts" setup>
 import { latest } from '@/apis/RabbitStatus'
 import { computed, onUnmounted, onMounted, ref } from 'vue'
+import { showPrimaryNotify } from '@/utils/notify'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import 'dayjs/locale/zh-tw'
-import { showNotify } from 'vant'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-tw')
@@ -50,10 +50,7 @@ const update = async () => {
         createAt.value = data.createAt
         diff.value = dayjs(createAt.value).fromNow()
     } catch (e) {
-        showNotify({
-            message: '無法取得兔子最新狀態QQ',
-            type: 'primary'
-        })
+        showPrimaryNotify('無法取得兔子最新狀態QQ')
     }
 }
 
