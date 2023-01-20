@@ -5,19 +5,38 @@
         :class="$style.container"
     >
         <img :class="$style.close" src="@/assets/close.svg" @click="emits('update:show', false)" />
-        <h2>{{ user?.username }}</h2>
-        <p>Email: {{ user?.email }}</p>
-        <p>身分： {{ groupText }}</p>
-        <Button
-            :class="$style.btn"
-            :round="true"
-            size="small"
-            type="primary"
-            @click="handleLogout"
+        <template
+            v-if="store.user"
         >
-            登出
-        </Button>
-        <RouterLink to="/rabbit-status"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink>
+            <h2>{{ user?.username }}</h2>
+            <p>Email: {{ user?.email }}</p>
+            <p>身分： {{ groupText }}</p>
+            <Button
+                :class="$style.btn"
+                :round="true"
+                size="small"
+                type="primary"
+                @click="handleLogout"
+            >
+                登出
+            </Button>
+            <RouterLink to="/rabbit-status"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink>
+            <ShowWithUserGroup :groups="['rabbit']">
+                <RouterLink to="/rabbit-status/create"> {{ '<=' }} 大帝請更新狀態</RouterLink>
+            </ShowWithUserGroup>
+        </template>
+        <template v-else>
+            <p>兔兔系統發現你還沒登入呢 >.0</p>
+            <Button
+                :class="$style.btn"
+                :round="true"
+                size="small"
+                type="primary"
+                @click="$router.push('/auth/login')"
+            >
+                登入
+            </Button>
+        </template>
     </div>
 </template>
 
@@ -27,6 +46,7 @@ import { useRouter } from 'vue-router'
 import { Button } from 'vant'
 import { computed, toRefs } from '@vue/reactivity'
 import useStore from '@/store'
+import ShowWithUserGroup from './ShowWithUserGroup.vue'
 
 const groupMap: Record<UserGroup, string> = { rabbit: '兔子大帝', owner: '主人', user: '兔粉' }
 
