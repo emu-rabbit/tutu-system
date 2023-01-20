@@ -20,7 +20,7 @@
             >
                 登出
             </Button>
-            <RouterLink to="/rabbit-status"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink>
+            <!-- <RouterLink to="/rabbit-status"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink> -->
             <ShowWithUserGroup :groups="['rabbit']">
                 <RouterLink to="/rabbit-status/create"> {{ '<=' }} 大帝請更新狀態</RouterLink>
             </ShowWithUserGroup>

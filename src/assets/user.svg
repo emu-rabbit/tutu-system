@@ -19,7 +19,7 @@
     </clipPath>
   </defs>
   
-  <circle cx="300" cy="300" r="280" fill="transparent" stroke="#ed69a6" stroke-width="18px" clip-path="url(#avoid-antialiasing-bugs)" />
+  <circle cx="300" cy="300" r="280" fill="transparent" stroke="#ed69a6" stroke-width="40px" />
   <circle cx="300" cy="230" r="115" fill="#ed69a6" />
   <circle cx="300" cy="550" r="205" clip-path="url(#circular-border)" fill="#ed69a6" />
 </svg>
