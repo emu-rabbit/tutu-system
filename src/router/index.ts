@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import Layout from '@/layout/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -22,16 +23,16 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Login.vue')
     },
     {
-        path: '/dashboard',
-        component: () => import('@/views/Dashboard.vue')
-    },
-    {
         path: '/rabbit-status',
-        component: () => import('@/views/RabbitStatus.vue')
-    },
-    {
-        path: '/rabbit-status/create',
-        component: () => import('@/views/RabbitStatusCreate.vue')
+        component: Layout,
+        children: [{
+            path: '',
+            component: () => import('@/views/RabbitStatus.vue')
+        },
+        {
+            path: 'create',
+            component: () => import('@/views/RabbitStatusCreate.vue')
+        }]
     },
     {
         path: '/:pathMatch(.*)*',

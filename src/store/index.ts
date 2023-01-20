@@ -4,7 +4,7 @@ const getDefaultState = () => ({
     user: null as {
         email: string,
         username: string,
-        userGroup: string[]
+        userGroup: UserGroup[]
     } | null
 })
 

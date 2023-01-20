@@ -41,7 +41,7 @@ const login = async () => {
             message: '登入成功',
             type: 'primary'
         })
-        router.push('/dashboard')
+        router.push('/rabbit-status')
     } catch (e) {
         console.log(e)
         showNotify({

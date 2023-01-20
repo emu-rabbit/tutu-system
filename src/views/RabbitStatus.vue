@@ -8,7 +8,6 @@
     >
         <h1>{{ status }}</h1>
         <h3>{{ diff }}</h3>
-        <img :class="$style.user" src="@/assets/user.svg" />
     </div>
 </template>
 
@@ -70,8 +69,6 @@ onUnmounted(() => {
 
 <style lang="scss" module>
 .container {
-    position: relative;
-
     h1, h3 {
         margin: 0;
         margin-bottom: 2vh;
@@ -83,15 +80,6 @@ onUnmounted(() => {
 
     h3 {
         font-size: 5vmin !important;
-    }
-
-    .user {
-        position: absolute;
-        top: 1em;
-        right: 1em;
-        cursor: pointer;
-        width: 12vmin;
-        height: 12vmin;
     }
 }
 </style>

@@ -6,11 +6,9 @@
 import useStore from '@/store'
 import { computed } from '@vue/reactivity'
 
-type Group = 'rabbit' | 'owner' | 'user'
-
 const props = withDefaults(
     defineProps<{
-        groups?: string[],
+        groups?: UserGroup[],
         noLogin?: boolean
     }>(),
     {

@@ -2,3 +2,5 @@ declare type Enumerate<N extends number, Acc extends number[] = []> = Acc['lengt
     ? Acc[number]
     : Enumerate<N, [...Acc, Acc['length']]>
 declare type InRange<MIN extends number, MAX extends number> = Exclude<Enumerate<MAX>, Enumerate<MIN>> | MAX
+
+declare type UserGroup = 'rabbit' | 'owner' | 'user'
