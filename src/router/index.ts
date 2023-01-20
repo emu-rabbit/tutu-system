@@ -31,7 +31,10 @@ const routes: Array<RouteRecordRaw> = [
         },
         {
             path: 'create',
-            component: () => import('@/views/RabbitStatusCreate.vue')
+            component: () => import('@/views/RabbitStatusCreate.vue'),
+            meta: {
+                permission: ['rabbit']
+            }
         }]
     },
     {

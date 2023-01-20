@@ -4,6 +4,7 @@
 
 <script lang="ts" setup>
 import useStore from '@/store'
+import { hasGroup } from '@/utils/auth'
 import { computed } from '@vue/reactivity'
 
 const props = defineProps<{
@@ -13,7 +14,7 @@ const props = defineProps<{
 const store = useStore()
 const show = computed(() => {
     const user = store.user
-    if (props.groups.filter(e => user?.userGroup.includes(e) ?? false).length > 0) return true
+    if (hasGroup(user?.userGroup || [], props.groups)) return true
     return false
 })
 </script>

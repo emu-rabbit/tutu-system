@@ -31,17 +31,6 @@ import { create, latest } from '@/apis/RabbitStatus'
 import { ref } from '@vue/reactivity'
 import { Field, Button, showNotify } from 'vant'
 import { onMounted } from 'vue'
-import useStore from '@/store'
-import router from '@/router'
-
-const store = useStore()
-if (!store.user || !store.user.userGroup.includes('rabbit')) {
-    showNotify({
-        message: '尚未登入',
-        type: 'primary'
-    })
-    router.push('/auth/login')
-}
 
 const status = ref(0)
 const createStatus = async () => {
