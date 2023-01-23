@@ -2,7 +2,19 @@
     <div
         class="centralize-container"
     >
-        {{ backpack }}
+        <h1>兔兔背包</h1>
+        <div
+            :class="$style.list"
+        >
+            <div
+                v-for="stack in backpack"
+                :key="stack.id"
+                :class="$style.row"
+            >
+                <span>{{ map(stack.name) }}</span>
+                <span>{{ stack.count }}個</span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -12,10 +24,14 @@ import { showPrimaryNotify } from '@/utils/notify'
 import { ref, onMounted } from 'vue'
 
 const backpack = ref<{
-    itemID: string,
+    id: string,
     name: string,
     count: number
 }[] | null>(null)
+
+const map = (name: string) => ({
+    poop: '兔兔精華'
+})[name] || name
 
 onMounted(async () => {
     try {
@@ -26,3 +42,24 @@ onMounted(async () => {
     }
 })
 </script>
+
+<style lang="scss" module>
+.list {
+    width: 75%;
+    .row {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 2vh 0;
+        border-top: 1px solid #999999;
+
+        &:last-child {
+            border-bottom: 1px solid #999999;
+        }
+
+        span {
+            font-size: 6vmin;
+        }
+    }
+}
+</style>
