@@ -7,7 +7,8 @@
         }"
     >
         <h1>{{ status }}</h1>
-        <h6>{{ message }}</h6>
+        <h6>{{ message || '-' }}</h6>
+        <hr />
         <h3>{{ diff }}</h3>
     </div>
 </template>
@@ -80,7 +81,14 @@ onUnmounted(() => {
 
     h6 {
         font-size: 4vmin !important;
-        margin-bottom: 4vh !important;
+    }
+
+    hr {
+        margin: 1vh;
+        width: 60%;
+        opacity: 0.7;
+        border: none;
+        border-bottom: 1px solid;
     }
 
     h3 {
