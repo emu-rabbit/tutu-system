@@ -14,6 +14,13 @@
             max="100"
             step="1"
         />
+        <Field
+            :class="$style.control"
+            v-model="message"
+            :disabled="disabled"
+            label="訊息"
+            type="text"
+        />
         <Button
             :class="$style.control"
             :round="true"
@@ -34,9 +41,10 @@ import { Field, Button } from 'vant'
 import { onMounted } from 'vue'
 
 const status = ref(0)
+const message = ref('')
 const createStatus = async () => {
     try {
-        await create(status.value)
+        await create(status.value, message.value)
         showPrimaryNotify('Success')
     } catch (e) {
         console.log(e)
@@ -49,6 +57,7 @@ onMounted(async () => {
     try {
         const { data } = (await latest()).data
         status.value = data.status
+        message.value = data.message
         disabled.value = false
     } catch (e) {
         // ...

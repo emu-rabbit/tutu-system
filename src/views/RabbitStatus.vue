@@ -7,6 +7,7 @@
         }"
     >
         <h1>{{ status }}</h1>
+        <h6>{{ message }}</h6>
         <h3>{{ diff }}</h3>
     </div>
 </template>
@@ -25,6 +26,7 @@ dayjs.locale('zh-tw')
 
 const status = ref<number | null>(null)
 const createAt = ref<string | null>(null)
+const message = ref<string | null>(null)
 const diff = ref<string>('')
 const color = computed(() => {
     if (!status.value) return '#bbbbbb'
@@ -48,6 +50,7 @@ const update = async () => {
         const { data } = (await latest()).data
         status.value = data.status
         createAt.value = data.createAt
+        message.value = data.message
         diff.value = dayjs(createAt.value).fromNow()
     } catch (e) {
         showPrimaryNotify('無法取得兔子最新狀態QQ')
@@ -66,13 +69,18 @@ onUnmounted(() => {
 
 <style lang="scss" module>
 .container {
-    h1, h3 {
+    h1, h6, h3 {
         margin: 0;
-        margin-bottom: 2vh;
     }
 
     h1 {
         font-size: 25vmin !important;
+        line-height: 1;
+    }
+
+    h6 {
+        font-size: 4vmin !important;
+        margin-bottom: 4vh !important;
     }
 
     h3 {
