@@ -4,6 +4,7 @@
     >
         <h1>兔兔背包</h1>
         <div
+            v-if="backpack"
             :class="$style.list"
         >
             <div
@@ -14,6 +15,12 @@
                 <span>{{ map(stack.name) }}</span>
                 <span>{{ stack.count }}個</span>
             </div>
+            <div v-if="backpack.length === 0">
+                背包空空如也QQ
+            </div>
+        </div>
+        <div v-else>
+            兔兔努力載入中...
         </div>
     </div>
 </template>
@@ -46,8 +53,11 @@ onMounted(async () => {
 <style lang="scss" module>
 .list {
     width: 75%;
-    .row {
+
+    > * {
         width: 100%;
+    }
+    .row {
         display: flex;
         justify-content: space-around;
         padding: 2vh 0;
