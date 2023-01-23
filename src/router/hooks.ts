@@ -14,11 +14,13 @@ router.beforeEach(async (to, from, next) => {
     const store = useStore()
     try {
         const { data } = await info()
-        store.user = {
-            email: data.email,
-            username: data.username,
-            userGroup: data.user_groups
-        }
+        store.user = data
+            ? {
+                email: data.email,
+                username: data.username,
+                userGroup: data.user_groups
+            }
+            : null
     } catch (e) {
         console.log('Info api failed')
         store.user = null
