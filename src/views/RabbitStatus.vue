@@ -1,6 +1,6 @@
 <template>
     <div
-        class="centralize-container"
+        class="centralize-container max-vh"
         :class="$style.container"
         :style="{
             color: color

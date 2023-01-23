@@ -4,7 +4,7 @@
         class="centralize-container"
         :class="$style.container"
     >
-        <img :class="$style.close" src="@/assets/close.svg" @click="emits('update:show', false)" />
+        <img :class="$style.close" src="@/assets/close.svg" @click="closePanel" />
         <template
             v-if="store.user"
         >
@@ -20,9 +20,12 @@
             >
                 登出
             </Button>
-            <!-- <RouterLink to="/rabbit-status"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink> -->
+            <RouterLink to="/rabbit-status" @click="closePanel"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink>
             <ShowWithUserGroup :groups="['rabbit']">
-                <RouterLink to="/rabbit-status/create"> {{ '<=' }} 大帝請更新狀態</RouterLink>
+                <RouterLink to="/rabbit-status/create" @click="closePanel"> {{ '<=' }} 大帝請更新狀態</RouterLink>
+            </ShowWithUserGroup>
+            <ShowWithUserGroup :groups="['rabbit', 'owner']">
+                <RouterLink to="/backpack" @click="closePanel"> {{ '<=' }} 前往背包</RouterLink>
             </ShowWithUserGroup>
         </template>
         <template v-else>
@@ -67,6 +70,7 @@ const store = useStore()
 const { user } = toRefs(store)
 const groupText = computed(() => user.value?.userGroup.map(group => (groupMap[group] || '')).join(', ') || '')
 
+const closePanel = () => emits('update:show', false)
 const handleLogout = async () => {
     try {
         await logout()

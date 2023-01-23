@@ -1,6 +1,6 @@
 <template>
     <div
-        class="centralize-container"
+        class="centralize-container max-vh"
         :class="$style.container"
     >
         <h1>兔兔註冊系統</h1>

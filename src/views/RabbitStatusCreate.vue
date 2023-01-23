@@ -1,6 +1,6 @@
 <template>
     <div
-        class="centralize-container"
+        class="centralize-container max-vh"
         :class="$style.container"
     >
         <h2>兔兔現在狀態如何呢？</h2>

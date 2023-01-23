@@ -38,6 +38,17 @@ const routes: Array<RouteRecordRaw> = [
         }]
     },
     {
+        path: '/backpack',
+        component: Layout,
+        children: [{
+            path: '',
+            component: () => import('@/views/Backpack.vue'),
+            meta: {
+                permission: ['rabbit', 'owner']
+            }
+        }]
+    },
+    {
         path: '/:pathMatch(.*)*',
         component: () => import('@/views/404.vue')
     }
