@@ -39,13 +39,16 @@ import { showPrimaryNotify } from '@/utils/notify'
 import { ref } from '@vue/reactivity'
 import { Field, Button } from 'vant'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 const status = ref(0)
 const message = ref('')
+const router = useRouter()
 const createStatus = async () => {
     try {
         await create(status.value, message.value)
         showPrimaryNotify('Success')
+        router.push('/rabbit-status')
     } catch (e) {
         console.log(e)
         showPrimaryNotify('Failed')
