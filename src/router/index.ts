@@ -46,6 +46,12 @@ const routes: Array<RouteRecordRaw> = [
             meta: {
                 permission: ['rabbit', 'owner']
             }
+        }, {
+            path: 'set',
+            component: () => import('@/views/BackpackSet.vue'),
+            meta: {
+                permission: ['rabbit']
+            }
         }]
     },
     {
