@@ -31,11 +31,7 @@ import { items } from '@/apis/Backpack'
 import { showPrimaryNotify } from '@/utils/notify'
 import { ref, onMounted } from 'vue'
 
-const backpack = ref<{
-    id: string,
-    name: string,
-    count: number
-}[] | null>(null)
+const backpack = ref<ItemStack[] | null>(null)
 
 const map = (name: string) => ({
     poop: '兔兔精華'

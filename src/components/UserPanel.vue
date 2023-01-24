@@ -21,11 +21,12 @@
                 登出
             </Button>
             <RouterLink to="/rabbit-status" @click="closePanel"> {{ '<=' }} 去看看兔兔的狀態吧</RouterLink>
-            <ShowWithUserGroup :groups="['rabbit']">
-                <RouterLink to="/rabbit-status/create" @click="closePanel"> {{ '<=' }} 大帝請更新狀態</RouterLink>
-            </ShowWithUserGroup>
             <ShowWithUserGroup :groups="['rabbit', 'owner']">
                 <RouterLink to="/backpack" @click="closePanel"> {{ '<=' }} 前往背包</RouterLink>
+            </ShowWithUserGroup>
+            <ShowWithUserGroup :groups="['rabbit']">
+                <RouterLink to="/rabbit-status/create" @click="closePanel"> {{ '<=' }} 大帝請更新狀態</RouterLink>
+                <RouterLink to="/backpack/set" @click="closePanel"> {{ '<=' }} 大帝請發禮物</RouterLink>
             </ShowWithUserGroup>
         </template>
         <template v-else>
