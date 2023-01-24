@@ -17,7 +17,9 @@
         >
             <Picker
                 :columns="options"
-                :visible-option-num="3"
+                :visible-option-num="Math.max(Math.min(options.length, 6), 3)"
+                confirm-button-text="確認"
+                cancel-button-text="取消"
                 @cancel="showPicker = false"
                 @confirm="onConfirm"
             />
