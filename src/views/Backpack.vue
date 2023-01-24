@@ -57,8 +57,10 @@ onMounted(async () => {
             width: 100%;
         }
         .row {
-            display: flex;
+            display: grid;
+            grid-template-columns: 5fr 3fr;
             justify-content: space-around;
+            gap: 2vw;
             padding: 2vh 0;
             border-top: 1px solid #999999;
 
