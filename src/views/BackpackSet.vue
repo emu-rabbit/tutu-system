@@ -42,12 +42,13 @@ import { showPrimaryNotify } from '@/utils/notify'
 import { computed, onMounted, ref, watchEffect } from 'vue'
 import { Button, Field } from 'vant'
 import Select from '@/components/Select.vue'
+import { itemMap } from '@/utils/map'
 
 const userList = ref<User[] | null>(null)
 const itemList = ref<Item[] | null>(null)
 
 const userColumns = computed(() => userList.value?.map(user => ({ text: user.username, value: user.id })))
-const itemColumns = computed(() => itemList.value?.map(item => ({ text: item.name, value: item.id })))
+const itemColumns = computed(() => itemList.value?.map(item => ({ text: itemMap(item.name), value: item.id })))
 
 const user = ref<SelectorOption | null>(null)
 const item = ref<SelectorOption | null>(null)

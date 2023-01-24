@@ -13,7 +13,7 @@
                 :key="stack.id"
                 :class="$style.row"
             >
-                <span>{{ map(stack.name) }}</span>
+                <span>{{ itemMap(stack.name) }}</span>
                 <span>{{ stack.count }}個</span>
             </div>
             <p v-if="backpack.length === 0">
@@ -30,12 +30,9 @@
 import { items } from '@/apis/Backpack'
 import { showPrimaryNotify } from '@/utils/notify'
 import { ref, onMounted } from 'vue'
+import { itemMap } from '@/utils/map'
 
 const backpack = ref<ItemStack[] | null>(null)
-
-const map = (name: string) => ({
-    poop: '兔兔精華'
-})[name] || name
 
 onMounted(async () => {
     try {

@@ -51,8 +51,7 @@ import { Button } from 'vant'
 import { computed, toRefs } from '@vue/reactivity'
 import useStore from '@/store'
 import ShowWithUserGroup from './ShowWithUserGroup.vue'
-
-const groupMap: Record<UserGroup, string> = { rabbit: '兔子大帝', owner: '主人', user: '兔粉' }
+import { userGroupMap } from '@/utils/map'
 
 withDefaults(
     defineProps<{
@@ -69,7 +68,7 @@ const router = useRouter()
 const store = useStore()
 
 const { user } = toRefs(store)
-const groupText = computed(() => user.value?.userGroup.map(group => (groupMap[group] || '')).join(', ') || '')
+const groupText = computed(() => user.value?.userGroup.map(group => userGroupMap(group)).join(', ') || '')
 
 const closePanel = () => emits('update:show', false)
 const handleLogout = async () => {
