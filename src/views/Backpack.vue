@@ -1,6 +1,7 @@
 <template>
     <div
         class="centralize-container"
+        :class="$style.container"
     >
         <h1>兔兔背包</h1>
         <div
@@ -15,13 +16,13 @@
                 <span>{{ map(stack.name) }}</span>
                 <span>{{ stack.count }}個</span>
             </div>
-            <div v-if="backpack.length === 0">
+            <p v-if="backpack.length === 0">
                 背包空空如也QQ
-            </div>
+            </p>
         </div>
-        <div v-else>
+        <p v-else>
             兔兔努力載入中...
-        </div>
+        </p>
     </div>
 </template>
 
@@ -51,24 +52,30 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" module>
-.list {
-    width: 75%;
-
-    > * {
-        width: 100%;
+.container {
+    p {
+        font-size: 4vmin;
     }
-    .row {
-        display: flex;
-        justify-content: space-around;
-        padding: 2vh 0;
-        border-top: 1px solid #999999;
 
-        &:last-child {
-            border-bottom: 1px solid #999999;
+    .list {
+        width: 75%;
+
+        > * {
+            width: 100%;
         }
+        .row {
+            display: flex;
+            justify-content: space-around;
+            padding: 2vh 0;
+            border-top: 1px solid #999999;
 
-        span {
-            font-size: 6vmin;
+            &:last-child {
+                border-bottom: 1px solid #999999;
+            }
+
+            span {
+                font-size: 6vmin;
+            }
         }
     }
 }
