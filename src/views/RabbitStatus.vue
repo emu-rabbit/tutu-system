@@ -10,6 +10,11 @@
         <h6>{{ message || '-' }}</h6>
         <hr />
         <h3>{{ diff }}</h3>
+        <ShowWithUserGroup
+            :groups="['rabbit', 'owner']"
+        >
+            <RouterLink to="/rabbit-status/recently"> {{ '< =' }} 去查看歷史兔兔</RouterLink>
+        </ShowWithUserGroup>
     </div>
 </template>
 
@@ -21,6 +26,8 @@ import { showPrimaryNotify } from '@/utils/notify'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import 'dayjs/locale/zh-tw'
+import ShowWithUserGroup from '@/components/ShowWithUserGroup.vue'
+import { statusColor } from '@/utils/color'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-tw')
@@ -29,23 +36,7 @@ const status = ref<number | null>(null)
 const createAt = ref<string | null>(null)
 const message = ref<string | null>(null)
 const diff = ref<string>('')
-const color = computed(() => {
-    if (!status.value) return '#bbbbbb'
-    if (status.value < 10) {
-        return '#ad0000'
-    } else if (status.value < 25) {
-        return '#b94e4e'
-    } else if (status.value < 45) {
-        return '#db871f'
-    } else if (status.value < 60) {
-        return '#dba326'
-    } else if (status.value < 70) {
-        return '#69c5c1'
-    } else if (status.value < 85) {
-        return '#748bdd'
-    }
-    return '#26d36b'
-})
+const color = computed(() => statusColor(status.value))
 const update = async () => {
     try {
         const { data } = (await latest()).data
@@ -93,6 +84,12 @@ onUnmounted(() => {
 
     h3 {
         font-size: 5vmin !important;
+    }
+
+    a {
+        position: fixed;
+        bottom: 0;
+        margin: 5vh 0;
     }
 }
 </style>
