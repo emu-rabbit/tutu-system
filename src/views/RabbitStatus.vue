@@ -6,8 +6,8 @@
             color: color
         }"
     >
-        <h1>{{ status }}</h1>
-        <h6>{{ message || '-' }}</h6>
+        <h1>{{ record?.status }}</h1>
+        <h6>{{ record?.message || '-' }}</h6>
         <hr />
         <h3>{{ diff }}</h3>
         <ShowWithUserGroup
@@ -15,6 +15,7 @@
         >
             <RouterLink to="/rabbit-status/recently"> {{ '< =' }} 去查看歷史兔兔</RouterLink>
         </ShowWithUserGroup>
+        <Popup></Popup>
     </div>
 </template>
 
@@ -22,28 +23,25 @@
 import { latest } from '@/apis/RabbitStatus'
 import { computed, onUnmounted, onMounted, ref } from 'vue'
 import { showPrimaryNotify } from '@/utils/notify'
+import ShowWithUserGroup from '@/components/ShowWithUserGroup.vue'
+import { statusColor } from '@/utils/color'
+import { Popup } from 'vant'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import 'dayjs/locale/zh-tw'
-import ShowWithUserGroup from '@/components/ShowWithUserGroup.vue'
-import { statusColor } from '@/utils/color'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-tw')
 
-const status = ref<number | null>(null)
-const createAt = ref<string | null>(null)
-const message = ref<string | null>(null)
+const record = ref<RabbitRecord | null>(null)
 const diff = ref<string>('')
-const color = computed(() => statusColor(status.value))
+const color = computed(() => statusColor(record.value?.status || null))
 const update = async () => {
     try {
         const { data } = (await latest()).data
-        status.value = data.status
-        createAt.value = data.createAt
-        message.value = data.message
-        diff.value = dayjs(createAt.value).fromNow()
+        record.value = data
+        diff.value = dayjs(record.value?.createAt).fromNow()
     } catch (e) {
         showPrimaryNotify('無法取得兔子最新狀態QQ')
     }
