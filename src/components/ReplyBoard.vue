@@ -139,7 +139,7 @@ const reply = async () => {
 
         &:last-child {
             padding-bottom: 3vh;
-            border-bottom: 1px dashed #aaaaaa;
+            border-bottom: 0.5px dashed #aaaaaa;
         }
     }
 
