@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkcute_owner"]=self["webpackChunkcute_owner"]||[]).push([[946],{946:function(n,e,r){r.r(e),r.d(e,{default:function(){return f}});var u=r(3396);const t={class:"centralize-container max-vh"},c=(0,u._)("div",null,[(0,u._)("h1",null,"404"),(0,u._)("p",null,"兔兔網站沒有這一頁QQ")],-1),l=[c];function a(n,e){return(0,u.wg)(),(0,u.iD)("div",t,l)}var i=r(89);const s={},o=(0,i.Z)(s,[["render",a]]);var f=o}}]);
+//# sourceMappingURL=946.0bcbf9ec.js.map
