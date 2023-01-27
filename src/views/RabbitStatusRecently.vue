@@ -49,6 +49,10 @@ onMounted(async () => {
 <style lang="scss" module>
 .container {
     padding: 10vh 0;
+
+    h2 {
+        margin-bottom: 2vh !important;
+    }
     .row {
         display: grid;
         grid-template-columns: 1fr 5fr;
@@ -74,11 +78,11 @@ onMounted(async () => {
                 justify-content: space-around;
 
                 >:first-child {
-                    font-size: 4vmin;
+                    font-size: 3vmin;
                 }
 
                 >:nth-child(2) {
-                    font-size: 1vmin;
+                    font-size: 2vmin;
                 }
             }
         }
