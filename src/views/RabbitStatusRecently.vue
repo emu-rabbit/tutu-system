@@ -12,6 +12,7 @@
                 :style="{
                     color: statusColor(record.status)
                 }"
+                @click="selectedRecord = record"
             >
                 <span>{{ record.status }}</span>
                 <span>
@@ -19,6 +20,17 @@
                     <span>{{ fromNow(record.createAt) }}</span>
                 </span>
             </div>
+            <Popup
+                :show="selectedRecord !== null"
+                :round="true"
+                :closeable="true"
+                @close="selectedRecord = null"
+            >
+                <ReplyBoard
+                    v-if="selectedRecord"
+                    :record="selectedRecord"
+                />
+            </Popup>
         </div>
     </div>
 </template>
@@ -29,6 +41,8 @@ import { showPrimaryNotify } from '@/utils/notify'
 import { onMounted, ref } from 'vue'
 import { statusColor } from '@/utils/color'
 import { fromNow } from '@/utils/date'
+import ReplyBoard from '@/components/ReplyBoard.vue'
+import { Popup } from 'vant'
 
 const records = ref<RabbitRecord[]>([])
 onMounted(async () => {
@@ -38,6 +52,8 @@ onMounted(async () => {
         showPrimaryNotify('無法取得歷史兔兔QQ')
     }
 })
+
+const selectedRecord = ref<RabbitRecord | null>(null)
 </script>
 
 <style lang="scss" module>
