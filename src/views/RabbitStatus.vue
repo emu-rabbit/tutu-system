@@ -7,7 +7,7 @@
         }"
     >
         <h1>{{ record?.status }}</h1>
-        <h6>{{ record?.message || '-' }}</h6>
+        <h6 @click="showReplies = true">{{ record?.message || '-' }}</h6>
         <hr />
         <h3>{{ diff }}</h3>
         <ShowWithUserGroup
@@ -15,7 +15,16 @@
         >
             <RouterLink to="/rabbit-status/recently"> {{ '< =' }} 去查看歷史兔兔</RouterLink>
         </ShowWithUserGroup>
-        <Popup></Popup>
+        <Popup
+            v-model:show="showReplies"
+            :round="true"
+            :closeable="true"
+        >
+            <ReplyBoard
+                v-if="record"
+                :record="record"
+            />
+        </Popup>
     </div>
 </template>
 
@@ -24,15 +33,12 @@ import { latest } from '@/apis/RabbitStatus'
 import { computed, onUnmounted, onMounted, ref } from 'vue'
 import { showPrimaryNotify } from '@/utils/notify'
 import ShowWithUserGroup from '@/components/ShowWithUserGroup.vue'
+import ReplyBoard from '@/components/ReplyBoard.vue'
 import { statusColor } from '@/utils/color'
 import { Popup } from 'vant'
+import { fromNow } from '@/utils/date'
 
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import 'dayjs/locale/zh-tw'
-
-dayjs.extend(relativeTime)
-dayjs.locale('zh-tw')
+const showReplies = ref(false)
 
 const record = ref<RabbitRecord | null>(null)
 const diff = ref<string>('')
@@ -41,7 +47,7 @@ const update = async () => {
     try {
         const { data } = (await latest()).data
         record.value = data
-        diff.value = dayjs(record.value?.createAt).fromNow()
+        diff.value = fromNow(record.value?.createAt)
     } catch (e) {
         showPrimaryNotify('無法取得兔子最新狀態QQ')
     }

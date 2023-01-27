@@ -16,7 +16,7 @@
                 <span>{{ record.status }}</span>
                 <span>
                     <span>{{ record.message }}</span>
-                    <span>{{ dayjs(record.createAt).fromNow() }}</span>
+                    <span>{{ fromNow(record.createAt) }}</span>
                 </span>
             </div>
         </div>
@@ -28,13 +28,7 @@ import { recently } from '@/apis/RabbitStatus'
 import { showPrimaryNotify } from '@/utils/notify'
 import { onMounted, ref } from 'vue'
 import { statusColor } from '@/utils/color'
-
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import 'dayjs/locale/zh-tw'
-
-dayjs.extend(relativeTime)
-dayjs.locale('zh-tw')
+import { fromNow } from '@/utils/date'
 
 const records = ref<RabbitRecord[]>([])
 onMounted(async () => {

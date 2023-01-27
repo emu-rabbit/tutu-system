@@ -12,6 +12,14 @@ declare type RabbitRecord = {
     message: string
 }
 
+declare type Reply = {
+    id: string,
+    username: string,
+    content: string,
+    public: boolean,
+    createAt: string
+}
+
 declare type ItemStack = {
     id: string,
     name: string,
