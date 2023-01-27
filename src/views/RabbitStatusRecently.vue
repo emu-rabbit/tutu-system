@@ -48,7 +48,7 @@ onMounted(async () => {
 
 <style lang="scss" module>
 .container {
-    padding: 5vh 0;
+    padding: 10vh 0;
     .row {
         display: grid;
         grid-template-columns: 1fr 5fr;
