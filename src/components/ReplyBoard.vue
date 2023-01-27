@@ -123,14 +123,14 @@ const reply = async () => {
     .reply {
         width: 92%;
         padding: 1vh 4%;
-        font-size: 2vmin;
+        font-size: 3vmin;
         text-align: left;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
         span {
-            font-size: 1vmin;
+            font-size: 2vmin;
         }
 
         &:first-child {

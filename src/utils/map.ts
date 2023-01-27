@@ -1,7 +1,8 @@
 export const userGroupMap = (userGroup: UserGroup) => ({
     rabbit: '兔子大帝',
     owner: '主人',
-    user: '兔粉'
+    fan: '兔粉',
+    user: '使用者'
 })[userGroup]
 
 export const itemMap = (item: string) => ({

@@ -19,16 +19,20 @@
         >
             <RouterLink to="/rabbit-status/recently"> {{ '< =' }} 去查看歷史兔兔</RouterLink>
         </ShowWithUserGroup>
-        <Popup
-            v-model:show="showReplies"
-            :round="true"
-            :closeable="true"
+        <ShowWithUserGroup
+            :groups="['rabbit', 'owner', 'fan']"
         >
-            <ReplyBoard
-                v-if="record"
-                :record="record"
-            />
-        </Popup>
+            <Popup
+                v-model:show="showReplies"
+                :round="true"
+                :closeable="true"
+            >
+                <ReplyBoard
+                    v-if="record"
+                    :record="record"
+                />
+            </Popup>
+        </ShowWithUserGroup>
     </div>
 </template>
 

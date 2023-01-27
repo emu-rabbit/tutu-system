@@ -3,7 +3,7 @@ declare type Enumerate<N extends number, Acc extends number[] = []> = Acc['lengt
     : Enumerate<N, [...Acc, Acc['length']]>
 declare type InRange<MIN extends number, MAX extends number> = Exclude<Enumerate<MAX>, Enumerate<MIN>> | MAX
 
-declare type UserGroup = 'rabbit' | 'owner' | 'user'
+declare type UserGroup = 'rabbit' | 'owner' | 'fan' | 'user'
 
 declare type RabbitRecord = {
     id: string,
