@@ -6,10 +6,14 @@
             color: color
         }"
     >
-        <h1>{{ record?.status }}</h1>
-        <h6 @click="showReplies = true">{{ record?.message || '-' }}</h6>
-        <hr />
-        <h3>{{ diff }}</h3>
+        <div style="display: contents;" @click="showReplies = true">
+            <h1>{{ record?.status }}</h1>
+            <h6>
+                {{ record?.message || '-' }}
+            </h6>
+            <hr />
+            <h3>{{ diff }}</h3>
+        </div>
         <ShowWithUserGroup
             :groups="['rabbit', 'owner']"
         >

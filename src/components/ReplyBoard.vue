@@ -30,18 +30,23 @@
             :class="$style.control"
         >
             <Field
+                v-model="content"
                 :class="$style.input"
                 type="text"
                 label="回覆"
             />
-            <img :class="$style.send" src="@/assets/send.svg" />
+            <img
+                :class="$style.send"
+                src="@/assets/send.svg"
+                @click="reply"
+            />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { fromNow } from '@/utils/date'
-import { replies as getReplies } from '@/apis/RabbitStatus'
+import { replies as getReplies, reply as postReply } from '@/apis/RabbitStatus'
 import { onMounted, ref } from 'vue'
 import { showPrimaryNotify } from '@/utils/notify'
 import { Field } from 'vant'
@@ -51,13 +56,25 @@ const props = defineProps<{
 }>()
 
 const replies = ref<Reply[] | null>(null)
-onMounted(async () => {
+const updateReplies = async () => {
     try {
         replies.value = (await getReplies(props.record.id)).data.replies
     } catch (e) {
         showPrimaryNotify('無法取得大家的回應QQ')
     }
-})
+}
+onMounted(updateReplies)
+
+const content = ref('')
+const reply = async () => {
+    try {
+        await postReply(props.record.id, content.value)
+        content.value = ''
+        updateReplies()
+    } catch (e) {
+        showPrimaryNotify('發送回應失敗')
+    }
+}
 </script>
 
 <style lang="scss" module>
