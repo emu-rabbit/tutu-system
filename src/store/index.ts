@@ -1,11 +1,7 @@
 import { defineStore } from 'pinia'
 
 const getDefaultState = () => ({
-    user: null as {
-        email: string,
-        username: string,
-        userGroup: UserGroup[]
-    } | null
+    user: null as User | null
 })
 
 export default defineStore('main', {

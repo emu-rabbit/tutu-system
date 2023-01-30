@@ -16,6 +16,7 @@ router.beforeEach(async (to, from, next) => {
         const { data } = await info()
         store.user = data
             ? {
+                id: data.id,
                 email: data.email,
                 username: data.username,
                 userGroup: data.user_groups
