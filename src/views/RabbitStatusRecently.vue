@@ -4,7 +4,7 @@
         :class="$style.container"
     >
         <h2>歷史兔兔</h2>
-        <div>
+        <div v-if="records.length > 0">
             <div
                 v-for="record in records"
                 :key="record.id"
@@ -20,18 +20,23 @@
                     <span>{{ fromNow(record.createAt) }}</span>
                 </span>
             </div>
-            <Popup
-                :show="selectedRecord !== null"
-                :round="true"
-                :closeable="true"
-                @close="selectedRecord = null"
-            >
-                <ReplyBoard
-                    v-if="selectedRecord"
-                    :record="selectedRecord"
-                />
-            </Popup>
         </div>
+        <div v-else>
+            <p>一天內沒有新的兔兔狀態QQ</p>
+        </div>
+        <Popup
+            :show="selectedRecord !== null"
+            :round="true"
+            :closeable="true"
+            :lazy-render="false"
+            @close="selectedRecord = null"
+        >
+            <ReplyBoard
+                v-if="selectedRecord"
+                :record="selectedRecord"
+                :show-reply-input="selectedRecord === records[0]"
+            />
+        </Popup>
     </div>
 </template>
 
@@ -58,9 +63,10 @@ const selectedRecord = ref<RabbitRecord | null>(null)
 
 <style lang="scss" module>
 .container {
-    padding: 10vh 0;
+    min-height: 100vh;
 
     h2 {
+        margin-top: 8vh !important;
         margin-bottom: 2vh !important;
     }
     .row {
@@ -75,6 +81,7 @@ const selectedRecord = ref<RabbitRecord | null>(null)
 
         &:last-child {
             border-bottom: 1px solid #999999;
+            margin-bottom: 8vh;
         }
 
         > span {
@@ -96,6 +103,10 @@ const selectedRecord = ref<RabbitRecord | null>(null)
                 }
             }
         }
+    }
+
+    p {
+        font-size: 2vmin;
     }
 }
 </style>

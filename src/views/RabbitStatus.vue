@@ -26,6 +26,7 @@
                 v-model:show="showReplies"
                 :round="true"
                 :closeable="true"
+                :lazy-render="false"
             >
                 <ReplyBoard
                     v-if="record"

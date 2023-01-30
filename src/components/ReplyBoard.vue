@@ -2,7 +2,7 @@
     <div
         :class="$style.container"
     >
-        <h3>大家的回應</h3>
+        <h3>留言板</h3>
         <div
             :class="$style.head"
         >
@@ -27,6 +27,7 @@
             </p>
         </div>
         <div
+            v-if="showReplyInput"
             :class="$style.control"
         >
             <Field
@@ -51,9 +52,15 @@ import { onMounted, ref } from 'vue'
 import { showPrimaryNotify } from '@/utils/notify'
 import { Field } from 'vant'
 
-const props = defineProps<{
-    record: RabbitRecord
-}>()
+const props = withDefaults(
+    defineProps<{
+        record: RabbitRecord,
+        showReplyInput?: boolean
+    }>(),
+    {
+        showReplyInput: true
+    }
+)
 
 const replies = ref<Reply[] | null>(null)
 const updateReplies = async () => {
@@ -99,6 +106,7 @@ const reply = async () => {
 
         > img {
             width: 30%;
+            aspect-ratio: 1;
         }
 
         > div {
@@ -156,7 +164,8 @@ const reply = async () => {
 
         .send {
             height: 24px;
-            padding: 4%;
+            width: 24px;
+            padding: 10px;
             border: 1px solid #aaaaaa;
             border-radius: 99999px;
             cursor: pointer;
