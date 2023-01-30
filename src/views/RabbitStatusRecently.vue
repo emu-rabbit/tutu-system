@@ -4,7 +4,13 @@
         :class="$style.container"
     >
         <h2>歷史兔兔</h2>
-        <div v-if="records.length > 0">
+        <div v-if="!records">
+            <p>兔兔努力抓取資料中...</p>
+        </div>
+        <div v-else-if="records.length === 0">
+            <p>一天內沒有新的兔兔狀態QQ</p>
+        </div>
+        <div v-else>
             <div
                 v-for="record in records"
                 :key="record.id"
@@ -21,9 +27,6 @@
                 </span>
             </div>
         </div>
-        <div v-else>
-            <p>一天內沒有新的兔兔狀態QQ</p>
-        </div>
         <Popup
             :show="selectedRecord !== null"
             :round="true"
@@ -34,7 +37,7 @@
             <ReplyBoard
                 v-if="selectedRecord"
                 :record="selectedRecord"
-                :show-reply-input="selectedRecord === records[0]"
+                :show-reply-input="selectedRecord === records?.[0]"
             />
         </Popup>
     </div>
@@ -49,7 +52,7 @@ import { fromNow } from '@/utils/date'
 import ReplyBoard from '@/components/ReplyBoard.vue'
 import { Popup } from 'vant'
 
-const records = ref<RabbitRecord[]>([])
+const records = ref<RabbitRecord[] | null>(null)
 onMounted(async () => {
     try {
         records.value = (await recently()).data.data

@@ -8,5 +8,6 @@ module.exports = defineConfig({
             target: ['http://localhost:8080/']
         }
     },
+    productionSourceMap: false,
     transpileDependencies: true
 })
