@@ -39,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
             path: 'recently',
             component: () => import('@/views/RabbitStatusRecently.vue'),
             meta: {
-                permission: ['rabbit', 'owner']
+                permission: ['rabbit', 'owner', 'fan']
             }
         }]
     },

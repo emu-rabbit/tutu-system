@@ -15,7 +15,7 @@
             <h3>{{ diff }}</h3>
         </div>
         <ShowWithUserGroup
-            :groups="['rabbit', 'owner']"
+            :groups="['rabbit', 'owner', 'fan']"
         >
             <RouterLink to="/rabbit-status/recently"> {{ '< =' }} 去查看歷史兔兔</RouterLink>
         </ShowWithUserGroup>
