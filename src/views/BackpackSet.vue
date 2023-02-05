@@ -52,7 +52,7 @@ const itemColumns = computed(() => itemList.value?.map(item => ({ text: itemMap(
 
 const user = ref<SelectorOption | null>(null)
 const item = ref<SelectorOption | null>(null)
-const count = ref<number | null>(0)
+const count = ref<string | null>('0')
 
 onMounted(async () => {
     try {
@@ -67,7 +67,7 @@ watchEffect(async () => {
     count.value = null
     if (user.value && item.value) {
         try {
-            count.value = await (await getCount(user.value.value, item.value.value)).data.count
+            count.value = (await getCount(user.value.value, item.value.value)).data.count
         } catch (e) {
             showPrimaryNotify('無法取得背包物品個數')
         }
@@ -77,7 +77,7 @@ watchEffect(async () => {
 const setItemCount = async () => {
     try {
         if (!user.value || !item.value || count.value === null) return
-        await set(user.value.value, item.value.value, count.value)
+        await set(user.value.value, item.value.value, parseInt(count.value))
         showPrimaryNotify('設定成功')
     } catch (e) {
         console.log(e)
