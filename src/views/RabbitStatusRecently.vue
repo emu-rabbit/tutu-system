@@ -66,10 +66,10 @@ const selectedRecord = ref<RabbitRecord | null>(null)
 
 <style lang="scss" module>
 .container {
-    min-height: 100vh;
+    min-height: 88vh;
+    padding: 6vh 0;
 
     h2 {
-        margin-top: 8vh !important;
         margin-bottom: 2vh !important;
     }
     .row {
@@ -84,7 +84,6 @@ const selectedRecord = ref<RabbitRecord | null>(null)
 
         &:last-child {
             border-bottom: 1px solid #999999;
-            margin-bottom: 8vh;
         }
 
         > span {
