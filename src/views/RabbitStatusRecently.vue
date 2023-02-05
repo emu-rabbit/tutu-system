@@ -66,8 +66,8 @@ const selectedRecord = ref<RabbitRecord | null>(null)
 
 <style lang="scss" module>
 .container {
-    min-height: 88vh;
-    padding: 6vh 0;
+    min-height: calc(var(--vh, 1vh)*88);
+    padding: calc(var(--vh, 1vh)*6) 0;
 
     h2 {
         margin-bottom: 2vh !important;
