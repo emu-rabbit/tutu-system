@@ -19,7 +19,7 @@ router.beforeEach(async (to, from, next) => {
                 id: data.id,
                 email: data.email,
                 username: data.username,
-                userGroup: data.user_groups
+                userGroup: data.userGroups
             }
             : null
     } catch (e) {

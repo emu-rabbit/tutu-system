@@ -4,6 +4,7 @@ import router from './router'
 import { createPinia } from 'pinia'
 
 import './router/hooks'
+import './utils/axios'
 
 import 'vant/lib/index.css'
 import 'nprogress/nprogress.css'

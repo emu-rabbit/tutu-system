@@ -38,11 +38,12 @@ const login = async () => {
         const { data: options } = await generateAuthenticationOptions({ email: email.value })
         const challenge = options.challenge
         const asstResp = await startAuthentication(options)
-        await verifyAuthentication({
+        const { token } = (await verifyAuthentication({
             asstResp,
             challenge,
             email: email.value
-        })
+        })).data
+        localStorage.setItem('token', token)
         showPrimaryNotify('登入成功')
         router.push('/rabbit-status')
     } catch (e) {

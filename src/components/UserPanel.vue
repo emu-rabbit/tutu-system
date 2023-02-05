@@ -45,7 +45,6 @@
 </template>
 
 <script lang="ts" setup>
-import { logout } from '@/apis/Auth'
 import { useRouter } from 'vue-router'
 import { Button } from 'vant'
 import { computed, toRefs } from '@vue/reactivity'
@@ -72,13 +71,8 @@ const groupText = computed(() => user.value?.userGroup.map(group => userGroupMap
 
 const closePanel = () => emits('update:show', false)
 const handleLogout = async () => {
-    try {
-        await logout()
-    } catch (e) {
-        // ...
-    } finally {
-        router.push('/auth/login')
-    }
+    localStorage.removeItem('token')
+    router.push('/auth/login')
 }
 </script>
 

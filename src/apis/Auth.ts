@@ -11,4 +11,3 @@ export const generateAuthenticationOptions = (arg: { email: string }) => axios.p
 export const verifyAuthentication = (arg: { asstResp: AuthenticationResponseJSON, email: string, challenge: string }) => axios.post(`${BASEURL}/authentication/verify`, arg, OPTIONS)
 
 export const info = () => axios.get(`${BASEURL}/info`, OPTIONS)
-export const logout = () => axios.post(`${BASEURL}/logout`, {}, OPTIONS)
