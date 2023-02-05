@@ -43,8 +43,14 @@ const username = ref('')
 const register = async () => {
     try {
         const { data: options } = await generateRegisterOptions({ email: email.value, username: username.value })
+        const challenge = options.challenge
         const attResp = await startRegistration(options)
-        await verifyRegister(attResp)
+        await verifyRegister({
+            attResp,
+            email: email.value,
+            username: username.value,
+            challenge
+        })
         showPrimaryNotify('註冊成功，可以登入了')
         router.push('/auth/login')
     } catch (e) {

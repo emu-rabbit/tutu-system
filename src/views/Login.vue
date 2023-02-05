@@ -36,8 +36,13 @@ const email = ref('')
 const login = async () => {
     try {
         const { data: options } = await generateAuthenticationOptions({ email: email.value })
+        const challenge = options.challenge
         const asstResp = await startAuthentication(options)
-        await verifyAuthentication(asstResp)
+        await verifyAuthentication({
+            asstResp,
+            challenge,
+            email: email.value
+        })
         showPrimaryNotify('登入成功')
         router.push('/rabbit-status')
     } catch (e) {
