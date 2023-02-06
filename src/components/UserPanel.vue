@@ -27,6 +27,7 @@
             <ShowWithUserGroup :groups="['rabbit']">
                 <RouterLink to="/rabbit-status/create" @click="closePanel"> {{ '<=' }} 大帝請更新狀態</RouterLink>
                 <RouterLink to="/backpack/set" @click="closePanel"> {{ '<=' }} 大帝請發禮物</RouterLink>
+                <RouterLink to="/item/edit" @click="closePanel"> {{ '<=' }} 大帝請調整物品</RouterLink>
             </ShowWithUserGroup>
         </template>
         <template v-else>

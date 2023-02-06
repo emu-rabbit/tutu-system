@@ -61,6 +61,17 @@ const routes: Array<RouteRecordRaw> = [
         }]
     },
     {
+        path: '/item',
+        component: Layout,
+        children: [{
+            path: 'edit',
+            component: () => import('@/views/ItemEdit.vue'),
+            meta: {
+                permission: ['rabbit']
+            }
+        }]
+    },
+    {
         path: '/:pathMatch(.*)*',
         component: () => import('@/views/404.vue')
     }

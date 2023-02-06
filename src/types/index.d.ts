@@ -28,7 +28,8 @@ declare type ItemStack = {
 
 declare type Item = {
     id: string,
-    name: string
+    name: string,
+    description: string
 }
 
 declare type User = {
