@@ -4,7 +4,6 @@ import useStore from '@/store'
 import { info } from '@/apis/Auth'
 import { hasGroup } from '@/utils/auth'
 import { showPrimaryNotify } from '@/utils/notify'
-import { isAxiosError } from 'axios'
 
 nprogress.configure({
     showSpinner: false
@@ -25,9 +24,11 @@ router.beforeEach(async (to, from, next) => {
             : null
     } catch (e) {
         console.log('Info api failed')
-        console.log(e)
-        if (isAxiosError(e) && e.status === 401) {
-            console.log('r')
+        if (
+            hasResponse(e) &&
+            hasStatus(e.response) &&
+            e.response.status === 401
+        ) {
             localStorage.removeItem('token')
         }
         store.user = null
@@ -46,3 +47,15 @@ router.beforeEach(async (to, from, next) => {
 })
 
 router.afterEach(() => nprogress.done())
+
+const hasResponse = (value: unknown): value is { response: unknown } => {
+    return typeof value === 'object' &&
+        value !== null &&
+        'response' in value
+}
+
+const hasStatus = (value: unknown): value is { status: unknown } => {
+    return typeof value === 'object' &&
+        value !== null &&
+        'status' in value
+}
