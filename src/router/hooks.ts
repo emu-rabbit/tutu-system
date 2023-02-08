@@ -25,7 +25,9 @@ router.beforeEach(async (to, from, next) => {
             : null
     } catch (e) {
         console.log('Info api failed')
+        console.log(e)
         if (isAxiosError(e) && e.status === 401) {
+            console.log('r')
             localStorage.removeItem('token')
         }
         store.user = null
