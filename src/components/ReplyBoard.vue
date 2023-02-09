@@ -37,7 +37,7 @@
                 label="回覆"
             />
             <img
-                :class="$style.send"
+                :class="[$style.send, { [$style.disabled]: !content }]"
                 src="@/assets/send.svg"
                 @click="reply"
             />
@@ -74,6 +74,7 @@ onMounted(updateReplies)
 
 const content = ref('')
 const reply = async () => {
+    if (!content.value) return
     try {
         await postReply(props.record.id, content.value)
         content.value = ''
@@ -169,6 +170,10 @@ const reply = async () => {
             border: 1px solid #aaaaaa;
             border-radius: 99999px;
             cursor: pointer;
+            &.disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
         }
     }
 }
