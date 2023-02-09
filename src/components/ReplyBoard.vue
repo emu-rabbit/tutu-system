@@ -37,7 +37,7 @@
                 label="回覆"
             />
             <img
-                :class="[$style.send, { [$style.disabled]: !content }]"
+                :class="[$style.send, { [$style.disabled]: !hasContent }]"
                 src="@/assets/send.svg"
                 @click="reply"
             />
@@ -48,7 +48,7 @@
 <script lang="ts" setup>
 import { fromNow } from '@/utils/date'
 import { replies as getReplies, reply as postReply } from '@/apis/RabbitStatus'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { showPrimaryNotify } from '@/utils/notify'
 import { Field } from 'vant'
 
@@ -73,8 +73,9 @@ const updateReplies = async () => {
 onMounted(updateReplies)
 
 const content = ref('')
+const hasContent = computed(() => content.value.trim())
 const reply = async () => {
-    if (!content.value) return
+    if (!hasContent.value) return
     try {
         await postReply(props.record.id, content.value)
         content.value = ''
