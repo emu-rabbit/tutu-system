@@ -14,7 +14,7 @@ const props = defineProps<{
 const store = useStore()
 const show = computed(() => {
     const user = store.user
-    if (hasGroup(user?.userGroup || [], props.groups)) return true
+    if (hasGroup(user?.userGroups || [], props.groups)) return true
     return false
 })
 </script>
