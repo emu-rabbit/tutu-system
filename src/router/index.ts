@@ -23,6 +23,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Login.vue')
     },
     {
+        path: '/auth/user-group/set',
+        component: Layout,
+        children: [{
+            path: '',
+            component: () => import('@/views/UserGroupSet.vue')
+        }]
+    },
+    {
         path: '/rabbit-status',
         component: Layout,
         children: [{

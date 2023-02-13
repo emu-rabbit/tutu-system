@@ -19,7 +19,7 @@ router.beforeEach(async (to, from, next) => {
                 id: data.id,
                 email: data.email,
                 username: data.username,
-                userGroup: data.userGroups
+                userGroups: data.userGroups
             }
             : null
     } catch (e) {
@@ -35,7 +35,7 @@ router.beforeEach(async (to, from, next) => {
     }
 
     if (to.meta.permission) {
-        if (hasGroup(store.user?.userGroup || [], to.meta.permission)) {
+        if (hasGroup(store.user?.userGroups || [], to.meta.permission)) {
             next()
         } else {
             showPrimaryNotify('沒有權限')

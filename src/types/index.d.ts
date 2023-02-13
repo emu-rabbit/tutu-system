@@ -36,7 +36,7 @@ declare type User = {
     id: string,
     email: string,
     username: string,
-    userGroup: UserGroup[]
+    userGroups: UserGroup[]
 }
 
 declare type SelectorOption = {

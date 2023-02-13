@@ -28,6 +28,7 @@
                 <RouterLink to="/rabbit-status/create" @click="closePanel"> {{ '<=' }} 大帝請更新狀態</RouterLink>
                 <RouterLink to="/backpack/set" @click="closePanel"> {{ '<=' }} 大帝請發禮物</RouterLink>
                 <RouterLink to="/item/edit" @click="closePanel"> {{ '<=' }} 大帝請調整物品</RouterLink>
+                <RouterLink to="/auth/user-group/set" @click="closePanel"> {{ '<=' }} 大帝請提名兔粉</RouterLink>
             </ShowWithUserGroup>
         </template>
         <template v-else>
@@ -68,7 +69,7 @@ const router = useRouter()
 const store = useStore()
 
 const { user } = toRefs(store)
-const groupText = computed(() => user.value?.userGroup.map(group => userGroupMap(group)).join(', ') || '')
+const groupText = computed(() => user.value?.userGroups.map(group => userGroupMap(group)).join(', ') || '')
 
 const closePanel = () => emits('update:show', false)
 const handleLogout = async () => {
