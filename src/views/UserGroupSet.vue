@@ -88,6 +88,7 @@ const onSubmit = async () => {
 .checkboxes {
     text-align: left;
     margin-left: 4rem;
+    font-size: 1rem;
 
     >* {
         margin-bottom: 0.5rem;
