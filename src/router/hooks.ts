@@ -5,12 +5,26 @@ import { info } from '@/apis/Auth'
 import { hasGroup } from '@/utils/auth'
 import { showPrimaryNotify } from '@/utils/notify'
 
+const inMaintain = true
+const whiteList = ['/maintain']
+
 nprogress.configure({
     showSpinner: false
 })
 
 router.beforeEach(async (to, from, next) => {
     nprogress.start()
+
+    if (whiteList.includes(to.path)) {
+        next()
+        return
+    }
+
+    if (inMaintain) {
+        next('/maintain')
+        return
+    }
+
     const store = useStore()
     try {
         const { data } = await info()
@@ -32,6 +46,8 @@ router.beforeEach(async (to, from, next) => {
             localStorage.removeItem('token')
         }
         store.user = null
+        next('/maintain')
+        return
     }
 
     if (to.meta.permission) {

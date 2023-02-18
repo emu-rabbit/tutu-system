@@ -11,6 +11,10 @@ const routes: Array<RouteRecordRaw> = [
     //     component: () => import('@/views/RabbitLoading.vue')
     // },
     {
+        path: '/maintain',
+        component: () => import('@/views/Maintain.vue')
+    },
+    {
         path: '/auth',
         redirect: '/auth/login'
     },

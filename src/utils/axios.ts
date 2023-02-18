@@ -6,5 +6,6 @@ axios.interceptors.request.use(config => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (config.headers as any).Authorization = TOKEN
     }
+    config.timeout = 3000
     return config
 })
