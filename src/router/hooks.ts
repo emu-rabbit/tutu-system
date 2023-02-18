@@ -44,10 +44,11 @@ router.beforeEach(async (to, from, next) => {
             e.response.status === 401
         ) {
             localStorage.removeItem('token')
+        } else {
+            next('/maintain')
+            return
         }
         store.user = null
-        next('/maintain')
-        return
     }
 
     if (to.meta.permission) {
