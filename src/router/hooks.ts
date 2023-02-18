@@ -5,7 +5,7 @@ import { info } from '@/apis/Auth'
 import { hasGroup } from '@/utils/auth'
 import { showPrimaryNotify } from '@/utils/notify'
 
-const inMaintain = true
+const inMaintain = false
 const whiteList = ['/maintain']
 
 nprogress.configure({
